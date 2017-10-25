@@ -5080,6 +5080,29 @@ $slick-opacity-not-active: 0.75 !default;
   padding-right: 40px;
 }
 
+.homepage-slideshow-background {
+    background: {{ settings.home_slideshow_bg }};
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.homepage-slideshow {
+    margin: 0 auto;
+
+}
+.homepage-slideshow.home_slideshow_boxed {
+    max-width: $siteWidth;
+    
+    /*================ Only show on larger screens ================*/
+  @include at-query ($min, $large) {
+    padding:0 $gutter;
+  }
+}
+
+.slideshow-title-font-size {font-size:{{ settings.slideshow_title_font_size }}px;}
+.slideshow-description-font-size {font-size:{{ settings.slideshow_description_font_size }}px;}
+.slideshow-button-font-size {font-size:{{ settings.slideshow_button_font_size }}px;}
+
 /*============================================================================
   #Magnific Popup CSS (used on password page)
 ==============================================================================*/

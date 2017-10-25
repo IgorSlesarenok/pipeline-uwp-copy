@@ -1,4 +1,5 @@
-<div class="homepage-slideshow {{ section.settings.height }}" data-section-id="{{ section.id }}" data-section-type="slideshow">
+<div class="homepage-slideshow-background">
+<div class="homepage-slideshow {{ section.settings.height }} {{ section.settings.width }}" data-section-id="{{ section.id }}" data-section-type="slideshow">
   {% if section.blocks.size > 0 %}
     <div id="slideshow-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.autoplay_speed }}">
       {% for block in section.blocks %}
@@ -12,16 +13,17 @@
           {% if block.settings.link_text == '' and block.settings.link and block.settings.button_image == nil %}
             <a href="{{ block.settings.link }}">
           {% endif %}
-          <div class="content--centered">
+          <div class="content--centered" style="top:{{ block.settings.text_vertical_align }}%;">
             <div class="{{ block.settings.text_align }} preventOverflowContent">
               {% if block.settings.button_image %}
                 <a href="{{ block.settings.link }}" class="button-image-slide">
                   <img src="{{ block.settings.button_image | img_url: '1000x' }}" alt="{{ block.settings.button_image.alt | default: block.settings.link_text }}" class="image--flex" />
                 </a>
               {% else %}
-                {% unless block.settings.title == '' %}<h1 class="title--flex">{{ block.settings.title | escape }}</h1>{% endunless %}
-                {% unless block.settings.description == '' %}<p class="content--flex h4--body">{{ block.settings.description }}</p>{% endunless %}
-                {% unless block.settings.link_text == '' %}<a class="{{ block.settings.button_style }}" href="{{ block.settings.link }}">{{ block.settings.link_text | escape }}</a>{% endunless %}
+                <style>.button-style-hover:hover, .button-style-hover:focus, .button-style-hover:active {color: {{ block.settings.button_text_color_hover }} !important;background-color: {{ block.settings.button_background_color_hover }} !important;border-color: {{ block.settings.button_border_color_hover }} !important;}</style>
+                {% unless block.settings.title == '' %}<h1 class="title--flex slideshow-title-font-size" style="color:{{ block.settings.title_color }}">{{ block.settings.title | escape }}</h1>{% endunless %}
+                {% unless block.settings.description == '' %}<p class="content--flex h4--body slideshow-description-font-size" style="color:{{ block.settings.description_color }}">{{ block.settings.description }}</p>{% endunless %}
+                {% unless block.settings.link_text == '' %}<a class="{{ block.settings.button_style }} button-style-hover slideshow-button-font-size" style="color:{{ block.settings.button_text_color }}; background-color:{{ block.settings.button_background_color }}; border-color:{{ block.settings.button_border_color }};" href="{{ block.settings.link }}">{{ block.settings.link_text | escape }}</a>{% endunless %}
               {% endif %}
             </div>
           </div>
@@ -57,7 +59,7 @@
   {% endif %}
 
 </div>
-
+</div>
 {% schema %}
 {
   "name": "Slideshow",
@@ -92,6 +94,16 @@
         { "value": "use_screen_one_half", "label": "Medium"},
         { "value": "use_screen_one_third", "label": "Short"},
         { "value": "use_image", "label": "Image height"}
+      ]
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Section width",
+      "default": "home_slideshow_boxed",
+      "options": [
+        { "value": "home_slideshow_boxed", "label": "Boxed"},
+        { "value": "home_slideshow_fullwidth", "label": "Full width"}
       ]
     }
   ],
@@ -137,6 +149,16 @@
           ]
         },
         {
+          "type": "select",
+          "id": "color",
+          "label": "lighter/darker",
+          "default": "homepage--white",
+          "options": [
+            { "value": "homepage--white", "label": "Darker"},
+            { "value": "homepage--dark", "label": "Lighter"}
+          ]
+        },
+        {
           "type": "header",
           "content": "Text"
         },
@@ -147,10 +169,22 @@
           "default": "Image slide"
         },
         {
+        "type": "color",
+        "id": "title_color",
+        "label": "Ttitle Color",
+        "default": "#ffffff"
+        },
+        {
           "type": "textarea",
           "id": "description",
           "label": "Description",
           "default": "Tell your brand's story through images."
+        },
+        {
+        "type": "color",
+        "id": "description_color",
+        "label": "Description Color",
+        "default": "#ffffff"
         },
         {
           "type": "select",
@@ -164,16 +198,14 @@
           ]
         },
         {
-          "type": "select",
-          "id": "color",
-          "label": "Text color",
-          "default": "homepage--white",
-          "options": [
-            { "value": "homepage--white", "label": "White"},
-            { "value": "homepage--light", "label": "Light"},
-            { "value": "homepage--splash", "label": "Accent"},
-            { "value": "homepage--dark", "label": "Dark"}
-          ]
+          "type":      "range",
+          "id":        "text_vertical_align",
+          "min":       25,
+          "max":        75,
+          "step":       1,
+          "unit":       "%",
+          "label":     "Vertical Align",
+          "default":   50
         },
         {
           "type": "header",
@@ -195,14 +227,48 @@
           "type": "select",
           "id": "button_style",
           "label": "Button style",
-          "default": "btn btn--large btn--clear btn--square uppercase",
+          "default": "btn btn--large btn--splash btn--square uppercase",
           "options": [
             { "value": "btn btn--large btn--splash uppercase", "label": "Round"},
             { "value": "btn btn--large btn--splash btn--square uppercase", "label": "Square"},
-            { "value": "btn btn--large btn--clear uppercase", "label": "Transparent round"},
-            { "value": "btn btn--large btn--clear btn--square uppercase", "label": "Transparent square"},
             { "value": "btn btn--large btn--outline btn--square uppercase", "label": "Outlined square"}
           ]
+        },
+        {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button Text Color",
+        "default": "#ffffff"
+        },
+        {
+        "type": "color",
+        "id": "button_background_color",
+        "label": "Button Background Color",
+        "default": "rgba(0, 0, 0, 0)"
+        },
+        {
+        "type": "color",
+        "id": "button_border_color",
+        "label": "Button Border Color",
+        "default": "#ffffff"
+        },
+        {
+        "type": "color",
+        "id": "button_text_color_hover",
+        "label": "Button Text Color hover",
+        "default": "#ffffff"
+        },
+        {
+        "type": "color",
+        "id": "button_background_color_hover",
+        "label": "Button Background Color hover",
+        "default": "rgba(181,150,86,0.3)"
+        },
+        {
+        "type": "color",
+        "id": "button_border_color_hover",
+        "label": "Button Border Color hover",
+        "default": "#000000"
         },
         {
           "type": "header",

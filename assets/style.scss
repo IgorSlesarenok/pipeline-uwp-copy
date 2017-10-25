@@ -275,11 +275,11 @@ $accentFontStack: "Montserrat", "Helvetica Neue",Arial,sans-serif;
 
 @font-face {
   font-family: 'icons';
-  src: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.eot?8916856105962719731');
-  src: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.eot?8916856105962719731#iefix') format("embedded-opentype"),
-       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.woff?8916856105962719731') format("woff"),
-       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.ttf?8916856105962719731') format("truetype"),
-       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.svg?8916856105962719731#timber-icons') format("svg");
+  src: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.eot?6318429265356211338');
+  src: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.eot?6318429265356211338#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.woff?6318429265356211338') format("woff"),
+       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.ttf?6318429265356211338') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.svg?6318429265356211338#timber-icons') format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1591,7 +1591,7 @@ select {
           appearance: none;
   background-position: right center;
   background: {
-    image: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/ico-select.svg?8916856105962719731');
+    image: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/ico-select.svg?6318429265356211338');
     repeat: no-repeat;
     position: right 10px center;
     color: transparent;
@@ -2144,7 +2144,7 @@ $infoBarPadding: 5px;
     border-top-right-radius: $radius;
     border-bottom-right-radius: $radius;
     width: 23px;
-    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/search.svg?8916856105962719731");
+    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/search.svg?6318429265356211338");
     background-repeat: no-repeat;
     background-position:  right 3px center;
     &:focus,
@@ -2283,11 +2283,11 @@ $infoBarPadding: 5px;
   }
   .header-hamburger{
     right: 0;
-    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/nav.svg?8916856105962719731") no-repeat left 0 center;
+    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/nav.svg?6318429265356211338") no-repeat left 0 center;
   }
   .header-cart{
     left: 0;
-    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/cart.svg?8916856105962719731") no-repeat left 0 center;
+    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/cart.svg?6318429265356211338") no-repeat left 0 center;
   }
   .header-cart__bubble{
     position: absolute;
@@ -2391,17 +2391,17 @@ $infoBarPadding: 5px;
   }
 }
 .lt-ie9 .nav--mobile .header-hamburger{
-  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/nav.png?8916856105962719731");
+  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/nav.png?6318429265356211338");
   background-position: right center;
   background-repeat: no-repeat;
 }
 .lt-ie9 .nav--mobile .header-cart{
-  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/cart.png?8916856105962719731");
+  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/cart.png?6318429265356211338");
   background-position: left center;
   background-repeat: no-repeat;
 }
 .lt-ie9 .header-search .search-bar{
-  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/search.png?8916856105962719731");
+  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/search.png?6318429265356211338");
   background-position: right center;
   background-repeat: no-repeat;
 }
@@ -5061,6 +5061,29 @@ $slick-opacity-not-active: 0.75 !default;
   padding-left: 40px;
   padding-right: 40px;
 }
+
+.homepage-slideshow-background {
+    background: #c8c8c8;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.homepage-slideshow {
+    margin: 0 auto;
+
+}
+.homepage-slideshow.home_slideshow_boxed {
+    max-width: $siteWidth;
+    
+    /*================ Only show on larger screens ================*/
+  @include at-query ($min, $large) {
+    padding:0 $gutter;
+  }
+}
+
+.slideshow-title-font-size {font-size:36px;}
+.slideshow-description-font-size {font-size:20px;}
+.slideshow-button-font-size {font-size:14px;}
 
 /*============================================================================
   #Magnific Popup CSS (used on password page)
