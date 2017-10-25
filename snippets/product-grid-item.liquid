@@ -14,7 +14,7 @@
 {% if product.available  %}
   {% assign sold_out = false %}
 {% endif %}
-
+<!-- snippets product-grid-item-->
 <div class="grid__item {{ grid_offset }} {{ grid_width_small }} {{ grid_width_medium }} {{ grid_width_large }}{% if on_sale %} on-sale{% endif %}  product-grid-item">
   <a href="{{ product.url | within: collection }}" class="grid__image">
     <img src="{{ product_img_url }}" alt="{{ product.featured_image.alt | escape }}">
@@ -45,4 +45,20 @@
       </p>
     </a>
   </div>
+  
+  
+  {% if settings.quick_buy_enable %}
+  <a href="{{ product.url | within: collection }}" class="btn">{{settings.quick_buy_cta}}</a>
+  
+  <div class="item-to-modal">
+    {% assign product_home = true %}
+
+    {% include 'product' %}
+    
+  </div>
+  
+  {% endif %}
+  
+  
+  
 </div>

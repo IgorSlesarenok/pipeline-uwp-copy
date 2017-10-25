@@ -513,8 +513,7 @@ pipeline.detectNav = function(){
   if ( totalWidth < widthLimit){
     $('.site-header, .info-bar').addClass('showDesktop');
     $('.site-header, .info-bar').removeClass('showMobile');
-  }
-  else {
+  } else {
     $('.site-header, .info-bar').addClass('showMobile');
     $('.site-header, .info-bar').removeClass('showDesktop');
   }
@@ -1347,6 +1346,29 @@ theme.Default = (function() {
 })();
 
 
+function checkSize(selector,csstocheck,cssvaluetocheck,moveelement,movetowhere,movebackelement){
+  
+  	if ($(selector).css(csstocheck) == cssvaluetocheck ){
+     // console.log("MOVE")
+      $(moveelement).insertBefore($(movetowhere));
+    }else{
+     // console.log("MOVE BACK")
+      $(moveelement).insertBefore($(movebackelement));
+    }
+}
+
+
+function movecopy(){
+  $(".homepage-image-grid .below-copy").each(function(){
+    if($(".homepage-image-grid .below-copy").css("max-width") == "100%" ){
+    	$(this).find(".copy").appendTo($(this));
+    }else{
+      $(this).find(".copy").prependTo($(this));
+    }
+  });
+}
+
+
 $(document).ready(function() {
   var sections = new theme.Sections();
 
@@ -1366,4 +1388,12 @@ $(document).ready(function() {
   sections.register('index-blog', theme.Default);
   sections.register('index-collection', theme.Default);
   sections.register('product-onboarding', theme.Default);
+  
+  movecopy()
+
+});
+
+
+$(window).resize(function(){
+	movecopy()
 });

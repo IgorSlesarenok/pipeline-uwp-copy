@@ -1,0 +1,34 @@
+<div class='grid'>
+  <div class='grid__item large--one-whole text-center'>
+    
+    <h2 class="uppercase newsletter_text">
+      {{ section.settings.title }}
+    </h2>
+
+    {% include 'newsletter-block-form' %}
+    
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [{
+		"type": "text",
+        "id": "title",
+        "label": "Title Text"
+	}],
+	"presets": [{
+		"name": "Newsletter",
+    	"category": "Social",
+        "settings": {
+		
+        }
+	}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
