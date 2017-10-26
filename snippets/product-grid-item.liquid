@@ -18,6 +18,9 @@
 <div class="grid__item {{ grid_offset }} {{ grid_width_small }} {{ grid_width_medium }} {{ grid_width_large }}{% if on_sale %} on-sale{% endif %}  product-grid-item">
   <a href="{{ product.url | within: collection }}" class="grid__image">
     <img src="{{ product_img_url }}" alt="{{ product.featured_image.alt | escape }}">
+    {% if settings.quick_buy_enable %}
+      <a href="{{ product.url | within: collection }}" data-mfp-src="#quick-popup-{{ product.id }}" class="btn quick_shop_btn">{{settings.quick_buy_cta}}</a>
+    {% endif %}
   </a>
   <div class="figcaption {{ settings.product_grid_style }} {{ settings.collection_text_alignment | default: 'text-center' }}">
     <a href="{{ product.url | within: collection | capitalize }}">
@@ -45,20 +48,35 @@
       </p>
     </a>
   </div>
-  
-  
-  {% if settings.quick_buy_enable %}
-  <a href="{{ product.url | within: collection }}" class="btn">{{settings.quick_buy_cta}}</a>
-  
-  <div class="item-to-modal">
-    {% assign product_home = true %}
 
-    {% include 'product' %}
-    
+{% if settings.quick_buy_enable %}
+  <div class="item-to-modal mfp-hide" id="quick-popup-{{ product.id }}">
+    {% assign product_home = true %}
+    {% include 'product-quick-view' %}
   </div>
-  
-  {% endif %}
-  
-  
-  
-</div>
+{% endif %}
+</div>   
+
+
+<script>
+$(document).ready(function() {
+  $('.quick_shop_btn').magnificPopup({
+  type:'inline',
+});
+
+});
+</script>
+
+<style>
+.item-to-modal {
+    /*display: none;*/
+    position: fixed;
+    top: 30px;
+    left: 2vw;
+    right: 2vw;
+    bottom: 30px;
+    z-index: 99999999;
+    overflow-y: auto;
+    background: #f6f6f6;
+}
+</style>

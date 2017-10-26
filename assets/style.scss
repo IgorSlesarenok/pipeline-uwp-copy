@@ -275,11 +275,11 @@ $accentFontStack: "Montserrat", "Helvetica Neue",Arial,sans-serif;
 
 @font-face {
   font-family: 'icons';
-  src: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.eot?6318429265356211338');
-  src: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.eot?6318429265356211338#iefix') format("embedded-opentype"),
-       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.woff?6318429265356211338') format("woff"),
-       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.ttf?6318429265356211338') format("truetype"),
-       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.svg?6318429265356211338#timber-icons') format("svg");
+  src: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.eot?1025206240281277075');
+  src: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.eot?1025206240281277075#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.woff?1025206240281277075') format("woff"),
+       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.ttf?1025206240281277075') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/icons.svg?1025206240281277075#timber-icons') format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1591,7 +1591,7 @@ select {
           appearance: none;
   background-position: right center;
   background: {
-    image: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/ico-select.svg?6318429265356211338');
+    image: url('//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/ico-select.svg?1025206240281277075');
     repeat: no-repeat;
     position: right 10px center;
     color: transparent;
@@ -2144,7 +2144,7 @@ $infoBarPadding: 5px;
     border-top-right-radius: $radius;
     border-bottom-right-radius: $radius;
     width: 23px;
-    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/search.svg?6318429265356211338");
+    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/search.svg?1025206240281277075");
     background-repeat: no-repeat;
     background-position:  right 3px center;
     &:focus,
@@ -2283,11 +2283,11 @@ $infoBarPadding: 5px;
   }
   .header-hamburger{
     right: 0;
-    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/nav.svg?6318429265356211338") no-repeat left 0 center;
+    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/nav.svg?1025206240281277075") no-repeat left 0 center;
   }
   .header-cart{
     left: 0;
-    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/cart.svg?6318429265356211338") no-repeat left 0 center;
+    background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/cart.svg?1025206240281277075") no-repeat left 0 center;
   }
   .header-cart__bubble{
     position: absolute;
@@ -2391,17 +2391,17 @@ $infoBarPadding: 5px;
   }
 }
 .lt-ie9 .nav--mobile .header-hamburger{
-  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/nav.png?6318429265356211338");
+  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/nav.png?1025206240281277075");
   background-position: right center;
   background-repeat: no-repeat;
 }
 .lt-ie9 .nav--mobile .header-cart{
-  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/cart.png?6318429265356211338");
+  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/cart.png?1025206240281277075");
   background-position: left center;
   background-repeat: no-repeat;
 }
 .lt-ie9 .header-search .search-bar{
-  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/search.png?6318429265356211338");
+  background: url("//cdn.shopify.com/s/files/1/2072/0585/t/4/assets/search.png?1025206240281277075");
   background-position: right center;
   background-repeat: no-repeat;
 }
@@ -5483,7 +5483,7 @@ img.mfp-img {
   right: 0;
   padding-top: 0; }
 button.mfp-close {
-  margin: 30px;
+  margin: 10px;
   font-size: em(40px);
   font-weight: 300px;
   opacity: 1;
@@ -5541,3 +5541,26 @@ button.mfp-close {
 .newsletter_text {
   margin-bottom: 1.5em; 
 }
+
+
+
+
+
+
+
+
+
+.quick_shop_btn {
+    display: none;
+    margin: 0 30%;
+    background-color: #a98742;
+    position: absolute;
+    width: 40%;
+    top: 80px;
+    left: 6.25%;
+    border: 1px solid #333;
+    opacity: .9;
+    transition: all 0.2s linear;
+}
+
+.product-grid-item:hover .quick_shop_btn{ display:block; }
